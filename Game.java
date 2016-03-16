@@ -13,12 +13,8 @@ import java.awt.event.MouseEvent;
 
 public class Game extends JPanel{
 
-	private BufferedReader img;
 	public static final int APPLICATION_WIDTH = 600;
 	public static final int APPLICATION_HEIGHT = 600;
-
-	private static final int WIDTH = APPLICATION_WIDTH;
-	private static final int HEIGHT = APPLICATION_HEIGHT;
 
 	public static void main(String[] args) {
 		Game game = new Game();
@@ -27,32 +23,32 @@ public class Game extends JPanel{
 
 	public void slidingTriangles() {
 		createGame();
-		executeGame();
 	}
 	public void createGame() {
 		setFrameImgs();
 
 	}
 	private void setFrameImgs() {
-	    JFrame window = new JFrame();
-	    JPanel panel = new JPanel();
-		window.setContentPane(panel);
-        JLabel label = new JLabel();
+
+		JFrame window = new JFrame();
+		JPanel panel = new JPanel();
+        
+
+        for (int i=0;i<20; i++){
+        	JLabel triangle = new JLabel();
+        	String index = Integer.toString(i+1);
+
+        	triangle.setIcon(new ImageIcon("Images/" + index + ".png"));
+            panel.add(triangle);
+        }
+
+        window.setContentPane(panel);
         window.setTitle("Sliding Triangles");
 		window.setSize(APPLICATION_WIDTH, APPLICATION_HEIGHT);
-        label.setIcon(new ImageIcon("Images/1.png"));
-        panel.add(label);
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
- 
-
-
-		private void executeGame() {
-
-		}
-
 }
 
 

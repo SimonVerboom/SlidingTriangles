@@ -1,13 +1,13 @@
 CLASSPATH = acm.jar
 CFLAGS = -cp $(CLASSPATH)
 
-JAVA_FILES = main.java
+JAVA_FILES = Game.java
 CLASS_FILES = $(JAVA_FILES:.java=.class)
 
 
 all: triangles
 
-traingles: main.class
+triangles: Game.class
 
 %.class: %.java
 	javac $(CFLAGS) $<
