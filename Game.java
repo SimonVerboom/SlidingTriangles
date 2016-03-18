@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game extends JPanel {
 
@@ -21,8 +22,9 @@ public class Game extends JPanel {
 		1,3,5,7,9,11,13,15,17));
 	private List<Integer> evenList = new ArrayList<Integer>(Arrays.asList(
 		2,4,6,8,10,12,14,16,18));
-	private List<Integer> currentList = new ArrayList<Integer>();
+	private ArrayList<Integer> currentList = new ArrayList<Integer>();
 
+	private Scanner scanner = new Scanner(System.in);
 	private JFrame window = new JFrame();
 	private JPanel panel = new JPanel();
 
@@ -32,7 +34,7 @@ public class Game extends JPanel {
 	}
 	public void slidingTriangles() {
 		createGame();
-		//executeGame();
+		executeGame();
 	}
 	public void createGame() {
 		shuffleLists();
@@ -41,6 +43,30 @@ public class Game extends JPanel {
 	public void shuffleLists() {
 		Collections.shuffle(oddList);
 		Collections.shuffle(evenList);
+	}
+
+	private void executeGame(){
+		System.out.println("What triangle do you want to move?");
+		int userInput = scanner.nextInt();
+
+		System.out.println(currentList);
+
+		for(int i=2; i<currentList.size(); i++){
+			if((currentList.get(i) == userInput) && ((currentList.get(i-2) == 19) || (currentList.get(i-2) == 20)) ){
+				if(isEven(currentList.get(i)) == true){
+					swapInteger(currentList.indexOf(20), i);
+				}
+				else{
+					swapInteger(currentList.indexOf(19), i);
+				}
+			}
+		}
+		System.out.println(currentList);
+		refillFrame(currentList);
+	}
+
+	private void swapInteger(int base, int userInput){
+		Collections.swap(currentList, base, userInput);
 	}
 
 	private void setFrameImgs() {
@@ -93,9 +119,7 @@ public class Game extends JPanel {
 		panel.removeAll();
 		for(int entry : triangles){
 			String index = Integer.toString(entry);
-			JLabel triangle = new JLabel();
-    		triangle.setIcon(new ImageIcon("Images/" + index + ".jpg"));
-			panel.add(triangle);
+			panelAdd(index);
 		}
 
 	}
