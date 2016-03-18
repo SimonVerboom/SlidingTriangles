@@ -6,6 +6,7 @@ CLASS_FILES = $(JAVA_FILES:.java=.class)
 
 
 all: triangles
+	java Game
 
 triangles: Game.class
 
