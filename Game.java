@@ -91,7 +91,10 @@ public class Game extends JPanel {
 
 	public void refillFrame(List<Integer> triangles){
 		panel.removeAll();
-		for(int triangle : triangles){
+		for(int entry : triangles){
+			String index = Integer.toString(entry);
+			JLabel triangle = new JLabel();
+    		triangle.setIcon(new ImageIcon("Images/" + index + ".jpg"));
 			panel.add(triangle);
 		}
 
