@@ -16,8 +16,8 @@ import java.util.Scanner;
 
 public class Game extends JPanel {
 
-	public static final int APPLICATION_WIDTH = 1200;
-	public static final int APPLICATION_HEIGHT = 1200;
+	public static final int APPLICATION_WIDTH = 800;
+	public static final int APPLICATION_HEIGHT = 1000;
 	private List<Integer> oddList = new ArrayList<Integer>(Arrays.asList(
 		1,3,5,7,9,11,13,15,17));
 	private List<Integer> evenList = new ArrayList<Integer>(Arrays.asList(
@@ -32,14 +32,17 @@ public class Game extends JPanel {
 		Game game = new Game();
 		game.slidingTriangles();
 	}
+	
 	public void slidingTriangles() {
 		createGame();
 		executeGame();
 	}
+	
 	public void createGame() {
 		shuffleLists();
 		setFrameImgs();
 	}
+	
 	public void shuffleLists() {
 		Collections.shuffle(oddList);
 		Collections.shuffle(evenList);
@@ -91,11 +94,9 @@ public class Game extends JPanel {
         	}
         	currentList.add(currentList.size(), random);
         }
-
         window.setContentPane(panel);
         window.setTitle("Sliding Triangles");
         window.setResizable(false);
-        //window.getContentPane().setBackground(Color.grey);
 		window.setSize(APPLICATION_WIDTH, APPLICATION_HEIGHT);
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -109,45 +110,21 @@ public class Game extends JPanel {
 			return false;
 		}
 	}
-	public void panelAdd(String index) {
-    	JLabel triangle = new JLabel();
-    	triangle.setIcon(new ImageIcon("Images/" + index + ".png"));
-        panel.add(triangle);
-	}
-
+	
 	public void refillFrame(List<Integer> triangles){
 		panel.removeAll();
 		for(int entry : triangles){
 			String index = Integer.toString(entry);
 			panelAdd(index);
 		}
+	}
 
+	public void panelAdd(String index) {
+    	JLabel triangle = new JLabel();
+    	triangle.setIcon(new ImageIcon("Images/" + index + ".png"));
+        panel.add(triangle);
 	}
 }
-
-// updateScreen
-
-/*Triangle triangle = new Triangle(10, 1, 5, 7.5);
-
-public class Triangle {
-	public final int sideLength;
-	public final int left;
-	public final int right;
-	public final int top;
-	public final boolean oddity;
-	public final JLAbel label;
-
-	public Triangle(int length, int top, int left, int right) {
-		this.length = length;
-		this.top = top;
-		this.left = left;
-		this.right = right;
-	}
-}
-
-
-*/
-
 
 
 
