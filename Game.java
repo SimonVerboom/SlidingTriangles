@@ -15,8 +15,8 @@ import java.util.List;
 
 public class Game extends JPanel {
 
-	public static final int APPLICATION_WIDTH = 1200;
-	public static final int APPLICATION_HEIGHT = 2000;
+	public static final int APPLICATION_WIDTH = 800;
+	public static final int APPLICATION_HEIGHT = 1000;
 	private List<Integer> oddList = new ArrayList<Integer>(Arrays.asList(
 		1,3,5,7,9,11,13,15,17));
 	private List<Integer> evenList = new ArrayList<Integer>(Arrays.asList(
@@ -42,7 +42,6 @@ public class Game extends JPanel {
 		Collections.shuffle(oddList);
 		Collections.shuffle(evenList);
 	}
-
 	private void setFrameImgs() {
 		panelAdd(Integer.toString(19));
 		panelAdd(Integer.toString(20));
@@ -65,7 +64,6 @@ public class Game extends JPanel {
         	}
         	currentList.add(currentList.size(), random);
         }
-
         window.setContentPane(panel);
         window.setTitle("Sliding Triangles");
         window.setResizable(false);
@@ -85,7 +83,7 @@ public class Game extends JPanel {
 	}
 	public void panelAdd(String index) {
     	JLabel triangle = new JLabel();
-    	triangle.setIcon(new ImageIcon("Images/" + index + ".png"));
+    	triangle.setIcon(new ImageIcon("Images/" + index + ".jpg"));
         panel.add(triangle);
 	}
 
