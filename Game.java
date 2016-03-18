@@ -21,6 +21,8 @@ public class Game extends JPanel {
 		1,3,5,7,9,11,13,15,17));
 	private List<Integer> evenList = new ArrayList<Integer>(Arrays.asList(
 		2,4,6,8,10,12,14,16,18));
+	private List<Integer> currentList = new ArrayList<Integer>();
+
 	private JFrame window = new JFrame();
 	private JPanel panel = new JPanel();
 
@@ -28,10 +30,9 @@ public class Game extends JPanel {
 		Game game = new Game();
 		game.slidingTriangles();
 	}
-
 	public void slidingTriangles() {
 		createGame();
-
+		//executeGame();
 	}
 	public void createGame() {
 		shuffleLists();
@@ -44,20 +45,25 @@ public class Game extends JPanel {
 
 	private void setFrameImgs() {
 		panelAdd(Integer.toString(19));
+		currentList.add(0, 19);
 		panelAdd(Integer.toString(20));
+		currentList.add(1, 20);
         for (int i=1;i<19; i++){
+        	int random;
         	if(isEven(i) == false) {
-        		int random = oddList.get(0);
+        		random = oddList.get(0);
         		oddList.remove(0);
         		String index = Integer.toString(random);
         		panelAdd(index);
         	} else {
-        		int random = evenList.get(0);
+        		random = evenList.get(0);
         		evenList.remove(0);
         		String index = Integer.toString(random);
         		panelAdd(index);
         	}
+        	currentList.add(currentList.size(), random);
         }
+        System.out.println(currentList);
 
         window.setContentPane(panel);
         window.setTitle("Sliding Triangles");
