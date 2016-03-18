@@ -5,12 +5,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
 import javax.swing.*;
-
 import javax.imageio.ImageIO;
 import java.awt.event.MouseEvent;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Arrays;
