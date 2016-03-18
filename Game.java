@@ -19,7 +19,7 @@ import java.util.List;
 public class Game extends JPanel {
 
 	public static final int APPLICATION_WIDTH = 1200;
-	public static final int APPLICATION_HEIGHT = 1200;
+	public static final int APPLICATION_HEIGHT = 2000;
 	private List<Integer> oddList = new ArrayList<Integer>(Arrays.asList(
 		1,3,5,7,9,11,13,15,17));
 	private List<Integer> evenList = new ArrayList<Integer>(Arrays.asList(
