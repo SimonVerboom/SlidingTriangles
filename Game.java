@@ -11,10 +11,21 @@ import javax.swing.*;
 import javax.imageio.ImageIO;
 import java.awt.event.MouseEvent;
 
-public class Game extends JPanel{
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Arrays;
+import java.util.List;
 
-	public static final int APPLICATION_WIDTH = 600;
-	public static final int APPLICATION_HEIGHT = 600;
+public class Game extends JPanel {
+
+	public static final int APPLICATION_WIDTH = 1200;
+	public static final int APPLICATION_HEIGHT = 1200;
+	private List<Integer> oddList = new ArrayList<Integer>(Arrays.asList(
+		1,3,5,7,9,11,13,15,17));
+	private List<Integer> evenList = new ArrayList<Integer>(Arrays.asList(
+		2,4,6,8,10,12,14,16,18));
+	private JFrame window = new JFrame();
+	private JPanel panel = new JPanel();
 
 	public static void main(String[] args) {
 		Game game = new Game();
@@ -23,50 +34,80 @@ public class Game extends JPanel{
 
 	public void slidingTriangles() {
 		createGame();
+
 	}
 	public void createGame() {
+		shuffleLists();
 		setFrameImgs();
-
 	}
+	public void shuffleLists() {
+		Collections.shuffle(oddList);
+		Collections.shuffle(evenList);
+	}
+
 	private void setFrameImgs() {
-
-		JFrame window = new JFrame();
-		JPanel panel = new JPanel();
-        
-
-        for (int i=0;i<20; i++){
-        	JLabel triangle = new JLabel();
-        	String index = Integer.toString(i+1);
-
-        	triangle.setIcon(new ImageIcon("Images/" + index + ".png"));
-            panel.add(triangle);
+		panelAdd(Integer.toString(19));
+		panelAdd(Integer.toString(20));
+        for (int i=1;i<19; i++){
+        	if(isEven(i) == false) {
+        		int random = oddList.get(0);
+        		oddList.remove(0);
+        		String index = Integer.toString(random);
+        		panelAdd(index);
+        	} else {
+        		int random = evenList.get(0);
+        		evenList.remove(0);
+        		String index = Integer.toString(random);
+        		panelAdd(index);
+        	}
         }
 
         window.setContentPane(panel);
         window.setTitle("Sliding Triangles");
+        window.setResizable(false);
+        //window.getContentPane().setBackground(Color.grey);
 		window.setSize(APPLICATION_WIDTH, APPLICATION_HEIGHT);
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
 
+	public boolean isEven(int i) {
+		if(i % 2 == 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	public void panelAdd(String index) {
+    	JLabel triangle = new JLabel();
+    	triangle.setIcon(new ImageIcon("Images/" + index + ".png"));
+        panel.add(triangle);
+	}
+}
+
+// updateScreen
+
+/*Triangle triangle = new Triangle(10, 1, 5, 7.5);
+
+public class Triangle {
+	public final int sideLength;
+	public final int left;
+	public final int right;
+	public final int top;
+	public final boolean oddity;
+	public final JLAbel label;
+
+	public Triangle(int length, int top, int left, int right) {
+		this.length = length;
+		this.top = top;
+		this.left = left;
+		this.right = right;
 	}
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 
 
