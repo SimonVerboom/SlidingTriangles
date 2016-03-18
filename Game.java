@@ -45,9 +45,11 @@ public class Game extends JPanel {
 
 	private void setFrameImgs() {
 		panelAdd(Integer.toString(19));
-		currentList.add(0, 19);
 		panelAdd(Integer.toString(20));
+		
+		currentList.add(0, 19);
 		currentList.add(1, 20);
+        
         for (int i=1;i<19; i++){
         	int random;
         	if(isEven(i) == false) {
@@ -63,7 +65,6 @@ public class Game extends JPanel {
         	}
         	currentList.add(currentList.size(), random);
         }
-        System.out.println(currentList);
 
         window.setContentPane(panel);
         window.setTitle("Sliding Triangles");
@@ -86,6 +87,14 @@ public class Game extends JPanel {
     	JLabel triangle = new JLabel();
     	triangle.setIcon(new ImageIcon("Images/" + index + ".png"));
         panel.add(triangle);
+	}
+
+	public void refillFrame(List<Integer> triangles){
+		panel.removeAll();
+		for(int triangle : triangles){
+			panel.add(triangle);
+		}
+
 	}
 }
 
