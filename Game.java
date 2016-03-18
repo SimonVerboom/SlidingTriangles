@@ -67,7 +67,6 @@ public class Game extends JPanel {
         window.setContentPane(panel);
         window.setTitle("Sliding Triangles");
         window.setResizable(false);
-        //window.getContentPane().setBackground(Color.grey);
 		window.setSize(APPLICATION_WIDTH, APPLICATION_HEIGHT);
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,7 +82,7 @@ public class Game extends JPanel {
 	}
 	public void panelAdd(String index) {
     	JLabel triangle = new JLabel();
-    	triangle.setIcon(new ImageIcon("Images/" + index + ".jpg"));
+    	triangle.setIcon(new ImageIcon("Images/" + index + ".png"));
         panel.add(triangle);
 	}
 
@@ -92,7 +91,7 @@ public class Game extends JPanel {
 		for(int entry : triangles){
 			String index = Integer.toString(entry);
 			JLabel triangle = new JLabel();
-    		triangle.setIcon(new ImageIcon("Images/" + index + ".jpg"));
+    		triangle.setIcon(new ImageIcon("Images/" + index + ".png"));
 			panel.add(triangle);
 		}
 
